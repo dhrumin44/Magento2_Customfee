@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customfee" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Checkout Custom Fee</label>
+            <tab>sales</tab>
+            <resource>Magento_Catalog::config_catalog</resource>
+
+            <group id="customfee" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Checkout Custom Fee Settings</label>
+                <field id="status" translate="label comment" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Custom Fee</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Turn On/Off Custom Fee]]></comment>
+                </field>
+                <field id="name" translate="label comment" type="text" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Frontend Fee Title</label>
+                    <comment><![CDATA[Change Frontend Fee Title]]></comment>
+                </field>
+                <field id="comment" translate="label comment" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Frontend Fee Comment</label>
+                    <comment><![CDATA[Comment will show bellow Fee title]]></comment>
+                </field>
+                <field id="customfee_type" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Fee Type</label>
+                    <source_model>Dmn112\CustomFee\Model\Config\Customfeetype</source_model>
+                </field>
+                <field id="customfee_amount" translate="label comment" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Fixed Amount Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="customfee_type">fixed</field>
+                    </depends>
+                    <comment><![CDATA[Fixed Amount Fee]]></comment>
+                </field>
+                <field id="customfee_percent_amount" translate="label comment" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Percent Amount Price</label>
+                    <depends>
+                        <field id="customfee_type">percent</field>
+                    </depends>
+                    <comment><![CDATA[Percent Amount Fee]]></comment>
+                </field>
+                <field id="minimum_order_amount" translate="label comment" type="text" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Minimum Order Amount To Display</label>
+                    <comment><![CDATA[Greaterthan or equal to]]></comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+            </group>
+
+        </section>
+
+    </system>
+</config>
