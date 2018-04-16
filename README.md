@@ -28,3 +28,8 @@ This module installed via Composer.
 4. If Magento is running in production mode, deploy static content:
 
    php bin/magento setup:static-content:deploy -f
+
+# Uninstall
+
+  php bin/magento module:uninstall Dmn112_Customfee<br>
+  php bin/magento setup:upgrade
